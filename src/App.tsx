@@ -4,21 +4,15 @@ import {TasksType, Todolist} from "./Todolist";
 
 function App() {
 
-    let tasks1: Array<TasksType> = [
+    let tasks: Array<TasksType> = [
         {id: 1, title: "CSS", isDone: true},
         {id: 2, title: "JS", isDone: true},
         {id: 3, title: "React", isDone: false},
-    ]
-
-    let tasks2: Array<TasksType> = [
-        {id: 1, title: "Terminator", isDone: true},
-        {id: 2, title: "Troya", isDone: false},
-        {id: 3, title: "Jentlments of fortune", isDone: false},
+        {id: 4, title: "Redux", isDone: false},
     ]
     return (
         <div className="App">
-            <Todolist title={"What to learn"} tasks={tasks1} />
-            <Todolist title={"Movies"} tasks={tasks2} />
+            <Todolist title={"What to learn"} tasks={tasks} />
         </div>
     );
 }
