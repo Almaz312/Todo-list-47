@@ -12,6 +12,7 @@ function App() {
         {id: v1(), title: "JS", isDone: true},
         {id: v1(), title: "React", isDone: false},
         {id: v1(), title: "Redux", isDone: false},
+        {id: v1(), title: "it-incubator.com", isDone: false},
     ]);
 
     console.log(tasks)
@@ -33,6 +34,14 @@ function App() {
         setTasks(newTasks)
     }
 
+    function changeStatus(taskId: string, isDone: boolean) {
+        let task = tasks.find(t => t.id === taskId)
+        if (task) {
+            task.isDone = isDone;
+        }
+        setTasks([...tasks])
+    }
+
     function changeFilter(value: FilterValueType) {
         setFilter(value);
     };
@@ -52,6 +61,8 @@ function App() {
                       removeTask={removeTask}
                       changeFilter={changeFilter}
                       addTask={addTask}
+                      changeTaskStatus={changeStatus}
+                      filter={filter}
             />
         </div>
     );
