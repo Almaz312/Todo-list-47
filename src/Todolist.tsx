@@ -1,7 +1,7 @@
 import React, {ChangeEvent} from "react";
 import {FilterValueType} from "./App";
 import {AddItemForm} from "./AddItemForm";
-import * as stream from "stream";
+import {EditableSpan} from "./EditableSpan";
 
 export type TasksType = {
     id: string;
@@ -77,13 +77,5 @@ export function Todolist(props: PropsType) {
     );
 };
 
-type EditableSpanPropsType = {
-    title: string,
-}
 
-function EditableSpan(props: EditableSpanPropsType) {
-    return (
-        <span>{props.title}</span>
-    )
-}
 
