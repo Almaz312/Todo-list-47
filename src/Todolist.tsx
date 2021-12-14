@@ -2,6 +2,8 @@ import React, {ChangeEvent} from "react";
 import {FilterValueType} from "./App";
 import {AddItemForm} from "./AddItemForm";
 import {EditableSpan} from "./EditableSpan";
+import {Button, IconButton} from "@material-ui/core";
+import {Delete} from "@material-ui/icons";
 
 export type TasksType = {
     id: string;
@@ -41,7 +43,9 @@ export function Todolist(props: PropsType) {
     return (
         <div>
             <h3> <EditableSpan title={props.title} onChange={changeTodolistTitle}/>
-                <button onClick={removeTodolist}>x</button>
+                <IconButton onClick={removeTodolist}>
+                    <Delete/>
+                </IconButton>
             </h3>
             <AddItemForm addItem={addTask}/>
             <ul>
@@ -64,26 +68,27 @@ export function Todolist(props: PropsType) {
                                 onChange={onChangeTitleHandler}
 
                             />
-                            <button onClick={onRemoveHandler}>x
-                            </button>
+                            <IconButton onClick={onRemoveHandler}>
+                                <Delete />
+                            </IconButton>
                         </li>
                     })
                 }
             </ul>
 
             <div>
-                <button
+                <Button
                     className={props.filter === "all" ? "active-filter" : ""}
                     onClick={onAllClickHandler}>All
-                </button>
-                <button
+                </Button>
+                <Button
                     className={props.filter === "active" ? "active-filter" : ""}
                     onClick={onActiveClickHandler}>Active
-                </button>
-                <button
+                </Button>
+                <Button
                     className={props.filter === "completed" ? "active-filter" : ""}
                     onClick={onCompletedClickHandler}>Completed
-                </button>
+                </Button>
             </div>
         </div>
     );
