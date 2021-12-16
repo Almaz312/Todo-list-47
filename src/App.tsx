@@ -17,7 +17,6 @@ type TasksStateType = {
 }
 
 function App() {
-
     function removeTask(id: string, todolistId: string) {
         let tasks = tasksObj[todolistId];
         let filteredTasks = tasks.filter(t => t.id !== id);
@@ -73,14 +72,25 @@ function App() {
         }
     };
 
+    function addTodolist(title: string) {
+        let todolist: TodoListType = {
+            id: v1(),
+            filter: "all",
+            title: title,
+        };
+        setTodolists([todolist, ...todolists]);
+        setTasks({
+            ...tasksObj,
+            [todolist.id]: []
+        })
+    }
+
     let todolistId1 = v1();
     let todolistId2 = v1();
-
     let [todolists, setTodolists] = useState<Array<TodoListType>>([
         {id: todolistId1, title: "What to learn", filter: "all"},
         {id: todolistId2, title: "What to buy", filter: "all"}
     ]);
-
     let removeTodolist = (todolistId: string) => {
         let filteredTodolist = todolists.filter(tl => tl.id !== todolistId)
         setTodolists(filteredTodolist);
@@ -88,7 +98,6 @@ function App() {
         delete tasksObj[todolistId];
         setTasks({...tasksObj});
     }
-
     let [tasksObj, setTasks] = useState<TasksStateType>({
         [todolistId1]: [
             {id: v1(), title: "CSS", isDone: true},
@@ -102,19 +111,6 @@ function App() {
             {id: v1(), title: "Milk", isDone: true},
         ]
     });
-
-    function addTodolist(title: string) {
-        let todolist: TodoListType = {
-            id: v1(),
-            filter: "all",
-            title: title,
-        };
-        setTodolists([todolist, ...todolists]);
-        setTasks({
-            ...tasksObj,
-            [todolist.id]: []
-        })
-    }
 
     return (
         <div className="App">
@@ -170,6 +166,5 @@ function App() {
         </div>
     );
 };
-
 
 export default App;

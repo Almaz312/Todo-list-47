@@ -22,7 +22,7 @@ export function EditableSpan(props: EditableSpanPropsType) {
 
     return (
         editMode
-        ? <TextField value={title} onChange={onChangeTitleHandler} onBlur={activateViewMode} autoFocus />
-        : <span onDoubleClick={activateEditMode}>{props.title}</span>
+            ? <TextField value={title} onChange={onChangeTitleHandler} onBlur={activateViewMode} autoFocus/>
+            : <span onDoubleClick={activateEditMode}>{props.title}</span>
     )
 }

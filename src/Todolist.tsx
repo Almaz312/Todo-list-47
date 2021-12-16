@@ -10,7 +10,6 @@ export type TasksType = {
     title: string;
     isDone: boolean;
 }
-
 type PropsType = {
     id: string;
     title: string;
@@ -26,7 +25,6 @@ type PropsType = {
 }
 
 export function Todolist(props: PropsType) {
-
     const onAllClickHandler = () => props.changeFilter("all", props.id);
     const onActiveClickHandler = () => props.changeFilter("active", props.id);
     const onCompletedClickHandler = () => props.changeFilter("completed", props.id);
@@ -95,6 +93,3 @@ export function Todolist(props: PropsType) {
         </div>
     );
 };
-
-
-
